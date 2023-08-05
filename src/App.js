@@ -1,12 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-import SignInSide from './components/SignIn';
+import React from "react";
+import "./App.css";
+import SignInSide from "./Screens/SignIn";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./Screens/HomePage";
 
 function App() {
   return (
-    <div className="App">
-      <SignInSide />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/*" element={<HomePage />} />
+          <Route path="/signin" element={<SignInSide />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
