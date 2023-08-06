@@ -12,10 +12,14 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { signIn } from '../store/actions/signInActions';
+import { useNavigate } from 'react-router';
 
 function Copyright(props) {
+
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+    <Typography variant="body2" color="text.secondary" align="center" {...props} style={{position: 'absolute',bottom: '9px'}}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
         Your Website
@@ -26,19 +30,27 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
+
+
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.signIn.user);
+  // const error = useSelector((state) => state.auth.error);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    dispatch(signIn(data.get('email'), data.get('password')))
+
+    console.log("user1",user)
+
   };
+
+  console.log("user2",user)
+
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -98,6 +110,7 @@ export default function SignInSide() {
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
+                style={{float: 'left'}}
               />
               <Button
                 type="submit"
@@ -109,17 +122,19 @@ export default function SignInSide() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  <Link href="#" variant="body2" 
+                     style={{float: 'left'}}
+                  >
                     Forgot password?
                   </Link>
                 </Grid>
-                <Grid item>
+                {/* <Grid item>
                   <Link href="#" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
-                </Grid>
+                </Grid> */}
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              {/* <Copyright sx={{ mt: 5 }} /> */}
             </Box>
           </Box>
         </Grid>

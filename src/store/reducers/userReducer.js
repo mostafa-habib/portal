@@ -1,22 +1,26 @@
-import {GET_USERS} from '../types'
+import { GET_USERS, USERS_ERROR } from '../types';
 
 const initialState = {
-    users:[],
-    loading:true
-}
+  users: [],
+  error: null,
+};
 
-export default function(state = initialState, action){
+const usersReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_USERS:
+      return {
+        ...state,
+        users: action.payload,
+        error: null,
+      };
+    case USERS_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
-    switch(action.type){
-
-        case GET_USERS:
-        return {
-            ...state,
-            users:action.payload,
-            loading:false
-
-        }
-        default: return state
-    }
-
-}
+export default usersReducer;
