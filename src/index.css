@@ -18,3 +18,15 @@ code {
   background-color: #eee;
 }
 
+.invoicNumber {
+  cursor: pointer;
+  padding: 4px 11px;
+  border-radius: 7px;
+  background-color: #f1f5f9;
+  color: #00425f;
+}
+
+.invoicNumber:hover {
+  background-color: #74a1b9;
+  color: #fff;
+}
