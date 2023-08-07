@@ -8,10 +8,10 @@ function handleAPI(
   ) {
     const token = localStorage.getItem('Access-Token');
     let headers = {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      'Access-Token': token,
-      'Authorization': 'Bearer ' + token,        
+      // 'Content-Type': 'application/json',
+      // Accept: 'application/json',
+      // 'Access-Token': 'token1111111222222222435432',
+      // 'Authorization': 'Bearer ' + 'token1111111222222222435432',        
     };
     
     let url = path;

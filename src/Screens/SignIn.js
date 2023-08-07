@@ -122,7 +122,7 @@ export default function SignInSide() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2" 
+                  <Link href="/forget-password" variant="body2" 
                      style={{float: 'left'}}
                   >
                     Forgot password?
